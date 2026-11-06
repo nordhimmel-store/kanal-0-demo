@@ -1,50 +1,80 @@
 <!doctype html><html lang="no"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>KANAL 0 — Personlig stjernekart</title><link rel="stylesheet" href="style.css"></head>
+<title>KANAL 0 — Personlig stjernekart</title><meta name="theme-color" content="#0B0D12">
+<link rel="icon" href="assets/logo.svg"><link rel="stylesheet" href="style.css"></head>
 <body data-scene="off">
-<button class="mode" id="mode">Enkel visning</button>
-<header class="stitle"><b>KANAL 0</b> Stjernekart</header>
-<main class="room">
- <div class="tv" id="tv">
-  <div class="screen" id="screen">
-   <canvas id="sky"></canvas><canvas id="static"></canvas>
-   <div class="ident" id="ident">KANAL<b>0</b></div>
-   <div class="osd live" id="live">● LIVE</div>
-   <div class="osd info" id="info"></div>
-   <div class="osd cap" id="capShow"></div>
-   <div class="dot" id="dot"></div>
-   <div class="scan"></div>
-  </div>
-  <div class="panel"><span class="brand">KANAL 0</span><button class="knob" id="knob" aria-label="Slå på"></button></div>
- </div>
- <p class="hint" id="hint">Trykk på knappen — <button id="on" class="btn">Slå på</button></p>
+<div class="roomlight" aria-hidden="true"></div>
+<header class="top">
+ <a class="lockup" href="#" aria-label="KANAL 0">
+  <svg class="mark" viewBox="0 0 48 48" aria-hidden="true"><rect x="3" y="7" width="42" height="34" rx="10" fill="none" stroke="currentColor" stroke-width="2.4"/><ellipse cx="24" cy="24" rx="8" ry="10.5" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="24" cy="24" r="2.2" fill="#FFB54A"/><path d="M17 3l7 4 7-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+  <span class="word">KANAL<b>0</b></span>
+ </a>
+ <span class="tag">Stjernekart fra din natt · Sendes i Norge</span>
+ <button class="mode" id="mode">Enkel visning</button>
+</header>
 
+<main class="room">
+ <div class="stage">
+ <div class="tv" id="tv">
+  <div class="cab">
+   <div class="bezel"><div class="screen" id="screen">
+    <canvas id="sky"></canvas><canvas id="static"></canvas>
+    <div class="ident" id="ident"><span>KANAL</span><b>0</b><i>NATTSENDING</i></div>
+    <div class="osd live" id="live"><i></i>DIREKTE</div>
+    <div class="osd info" id="info"></div>
+    <div class="osd cap" id="capShow"></div>
+    <div class="dot" id="dot"></div>
+    <div class="scan"></div><div class="glass"></div>
+   </div></div>
+   <div class="side">
+    <div class="grille"></div>
+    <div class="dial"><span class="lbl">KANAL</span><div class="ticks"></div><button class="knob" id="knob" aria-label="Slå på"><i></i></button></div>
+    <div class="led"><i></i><span>POWER</span></div>
+   </div>
+  </div>
+  <div class="plinth"><span>KANAL 0 · MODELL 1987</span></div>
+  <div class="legs"><i></i><i></i></div>
+ </div>
+ <p class="hint" id="hint"><span>Vri på knappen for å stille inn himmelen</span><button id="on" class="btn">Slå på ⏻</button></p>
+ </div>
+
+ <div class="studio">
  <section class="osdform" id="form">
+  <h3 class="sec"><em>01</em> Når og hvor</h3>
   <label>Sted<select id="place"></select></label>
   <label>Dato<input type="date" id="date"></label>
-  <label>Tid<input type="time" id="time" value="22:00"></label>
-  <label class="wide">Tekst<input id="cap" maxlength="40" placeholder="Natten vi møttes"></label>
-  <label class="chk"><input type="checkbox" id="lines" checked> Stjernebilder</label>
-  <p class="tip">Dra på skjermen for å se deg rundt.</p>
+  <label>Klokkeslett<input type="time" id="time" value="22:00"></label>
+  <label class="wide">Tekst på plakaten<input id="cap" maxlength="40" placeholder="Natten vi møttes"></label>
+  <label class="chk"><input type="checkbox" id="lines" checked><span></span> Vis stjernebilder</label>
+  <p class="tip">Dra på skjermen for å se deg rundt på himmelen.</p>
  </section>
 
  <section class="print" id="print">
-  <canvas id="poster" width="600" height="800"></canvas>
+  <div class="wall"><div class="frame"><div class="mat"><canvas id="poster" width="1200" height="1600"></canvas></div></div><div class="cast"></div></div>
   <div class="opts">
-   <div class="seg" id="styles"><button data-s="midnatt" class="on">Midnatt</button><button data-s="dyp">Dyp blå</button><button data-s="lys">Lys papir</button></div>
-   <div class="seg" id="sizes"><button data-z="30×40" data-p="399" class="on">30×40 · 399</button><button data-z="50×70" data-p="549">50×70 · 549</button></div>
+   <h3 class="sec"><em>02</em> Stil</h3>
+   <div class="seg sw" id="styles"><button data-s="midnatt" class="on"><i style="--c:#0B0D12"></i>Midnatt</button><button data-s="dyp"><i style="--c:#13264a"></i>Dyp blå</button><button data-s="lys"><i style="--c:#F2EDE3"></i>Lys papir</button></div>
+   <h3 class="sec"><em>03</em> Størrelse</h3>
+   <div class="seg sz" id="sizes"><button data-z="30×40" data-p="399" class="on"><b>30 × 40 cm</b><small>399 kr</small></button><button data-z="50×70" data-p="549"><b>50 × 70 cm</b><small>549 kr</small></button></div>
+   <p class="fine">Museumspapir 200 g · matt · trykket og sendt fra Norge på 3–5 dager</p>
+  </div>
+ </section>
+ </div>
+
+ <section class="checkout" id="checkout">
+  <div class="card">
+   <div class="chead"><span class="demo">● DEMO</span><span class="nobill">Ingen betaling trekkes</span></div>
+   <h2>Din sending</h2>
+   <div class="item"><canvas id="thumb" width="120" height="160"></canvas><p id="sum"></p></div>
+   <h4>Frakt</h4>
+   <div class="seg" id="ship"><button data-c="99" class="on">Norge<small>99 kr</small></button><button data-c="199">Utland<small>199 kr</small></button></div>
+   <dl class="lines"><dt>Plakat</dt><dd id="lp"></dd><dt>Frakt</dt><dd id="ls"></dd></dl>
+   <p class="tot"><span>Totalt</span><b><span id="tot"></span> kr</b></p>
+   <button class="btn big" id="order">Bestill — send i luften</button>
+   <button class="link" id="back">← Tilbake</button>
   </div>
  </section>
 
- <section class="checkout" id="checkout">
-  <div class="card"><span class="demo">DEMO — ingen betaling</span>
-   <h2>Din sending</h2><p id="sum"></p>
-   <div class="seg" id="ship"><button data-c="99" class="on">Norge · Posten/Helthjem 99</button><button data-c="199">Utland 199</button></div>
-   <p class="tot">Totalt <b id="tot"></b> NOK</p>
-   <button class="btn big" id="order">Bestill — send i luften</button>
-   <button class="link" id="back">← Tilbake</button></div>
- </section>
-
- <section class="done" id="done"><h1>KANAL 0 — sending nr. <span id="no"></span></h1><p>Episode låst. Demo: ingen ordre er sendt.</p><button class="btn" id="again">Ny sending</button></section>
+ <section class="done" id="done"><p class="eyebrow">Sending mottatt</p><h1>Nr. <span id="no"></span></h1><p>Episoden er låst. Dette er en demo — ingen ordre er sendt og ingenting er belastet.</p><button class="btn" id="again">Ny sending</button></section>
 </main>
-<div class="bar" id="bar"><span id="barTxt">399 NOK + ~99 frakt</span><button class="btn" id="next">Se plakaten</button></div>
+<div class="bar" id="bar"><span id="barTxt">399 kr + ~99 frakt</span><button class="btn" id="next">Se plakaten</button></div>
 <script type="module" src="app.js"></script></body></html>
